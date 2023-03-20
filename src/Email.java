@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * This class is used to create email accounts for new hires.
+ * 
+ * @author Tori Thompson
+ */
 public class Email {
     private String firstName;
     private String lastName;
@@ -11,7 +16,13 @@ public class Email {
     private int defaultPasswordLength = 10;
     private String companySuffix;
 
-    // Constructor to receive the first name and last name
+    // Constructor to receive the first name and last name and set the email address
+    // and password
+    // (default password length is 10 characters)
+    // (default mailbox capacity is 500mb)
+    // (default alternate email is "none")
+    // (default department is "none")
+    // (default company suffix is "company.com")
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -22,6 +33,13 @@ public class Email {
         System.out.println("Your password is: " + this.password);
     }
 
+    /**
+     * Generate a random password of a given length using a set of characters to
+     * choose from (passwordSet) and return it.
+     * 
+     * @param length
+     * @return String
+     */
     private String randomPassword(int length) {
         String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
         char[] password = new char[length];
@@ -32,6 +50,12 @@ public class Email {
         return new String(password);
     }
 
+    /**
+     * Set the department by prompting the user to enter a number corresponding to
+     * the department they work in. Return the department.
+     * 
+     * @return String
+     */
     private String setDepartment() {
         String department = "";
         System.out.print(
@@ -55,6 +79,7 @@ public class Email {
         this.mailboxCapacity = capacity;
     }
 
+    // Get the mailbox capacity
     public int getMailboxCapacity() {
         return mailboxCapacity;
     }
@@ -64,6 +89,7 @@ public class Email {
         this.alternateEmail = altEmail;
     }
 
+    // Get the alternate email
     public String getAlternateEmail() {
         return alternateEmail;
     }
@@ -73,10 +99,16 @@ public class Email {
         this.password = password;
     }
 
+    // Get the password
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Return a string containing the employee's name, email, and mailbox capacity.
+     * 
+     * @return String
+     */
     public String showInfo() {
         return "DISPLAY NAME: " + firstName + " " + lastName +
                 "\nCOMPANY EMAIL: " + email + "\nMAILBOX CAPACITY: " + mailboxCapacity + "mb";
